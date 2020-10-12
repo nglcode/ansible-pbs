@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+  - name: create user 123
+    user:
+      name: "{{ item }}"
+      state: absent
+      shell: /bin/bash
+    with_items:
+    - usuario1
+    - usuario2
+    - usuario3
+
+
