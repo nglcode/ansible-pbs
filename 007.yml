@@ -1,0 +1,20 @@
+---
+- name: Ejemplos de modulos de ficheros y openssl
+  hosts: localhost
+  tasks:
+    - name: Crear fichero con contenido especificado
+      copy: content="Esto es un ejemplo \n" dest="/tmp/prueba" backup=yes
+    - name: Propiedades fichero
+      file: path="/tmp/prueba" state=absent backup=yes
+    - name: Utilizando stat
+      stat: path=/etc/
+      register: datos
+    - name: Deshabilitar SELinux
+      lineinfile: path=/tmp/config regexp="^SELINUX=" line="SELINUX=disabled"
+    - name: Eliminar grupo desde sudoers
+      lineinfile: dest=/tmp/sudoers state=absent regexp="^%wheel"
+
+    - debug: msg="Es un directorio"
+      when: datos.stat.isdir
+
+

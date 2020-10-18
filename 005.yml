@@ -1,0 +1,15 @@
+---
+- name: Ejemplos de modulos de ficheros y openssl
+  hosts: webservers
+  become: True
+  tasks:
+    - name: Crear fichero con contenido especificado
+      copy: content="Esto es un ejemplo \n" dest="/tmp/prueba" backup=yes
+    - name: Propiedades fichero
+      file: path="/tmp/prueba" state=absent backup=yes
+    - name: Utilizando stat
+      stat: path=/etc/
+      register: datos
+
+    - debug: msg="Es un directorio"
+      when: datos.stat.isdir
