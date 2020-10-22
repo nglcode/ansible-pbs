@@ -1,0 +1,16 @@
+---
+- name: Trabajar con modulos packing
+  hosts: webservers
+  become: True
+  tasks:
+    - name: Add repo de google chrome
+      apt_repository:
+        repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
+        state: present
+        filename: "file-name"
+    - name: Instalar ntpdate
+      package: name=ntpdate state=latest
+    
+
+
+

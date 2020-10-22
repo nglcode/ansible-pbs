@@ -1,0 +1,14 @@
+---
+- name: Trabajar con modulos packing
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Instalar pip
+      easy_install: name=pip state=latest
+
+    - name: Instalar modulo requests
+      pip: name=requests state=latest
+      
+
+
+

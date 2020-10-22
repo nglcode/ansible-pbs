@@ -1,0 +1,12 @@
+---
+- name: Trabajar con modulos packing
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Instalar cpanm
+      yum: name=perl-App-cpanminus state=latest
+    - name: Instalar DBI
+      cpanm: name=DBI
+
+
+

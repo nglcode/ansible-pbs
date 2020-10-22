@@ -1,0 +1,22 @@
+---
+- name: Trabajar con modulos packing
+  hosts: localhost
+  become: True
+  tasks:
+    - name: Instalar httpd
+      yum: name=httpd state=latest
+    - name: Actualizar paquetes
+      yum: name='*' state=latest
+    - name: Instalar dev tools
+      yum: name="@Development Tools" state=latest
+
+    - name: Activar EPEL
+      yum_repository:
+        name: epel
+        description: EPEL YUM repo
+        state: present
+        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    
+
+
+
