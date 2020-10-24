@@ -1,0 +1,14 @@
+---
+- name: Trabajar con modulos de comandos
+  hosts: localhost
+  become: True
+  tasks:
+    - script: /usr/local/src/uname.sh
+    - shell: uptime >> uptime.log
+      args:
+        chdir: /tmp
+
+    
+
+
+

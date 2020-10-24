@@ -1,0 +1,25 @@
+---
+- name: Trabajar con modulos de utilidades
+  hosts: localhost
+  become: True
+  tasks:
+    - include_vars: variables_inc.yml
+    # - include_role: name=httpd
+    - debug: msg="Hostname {{ ansible_hostname }} y FQDN {{ ansible_fqdn }}"
+    - command: uptime
+      register: salida
+    - debug: var=salida
+    - fail: msg="Numero no es 10"
+      when: numero != 10
+    - pause: prompt="Comprueba la app..." seconds=2
+    - assert:
+        msg: "Numero tiene que estar entre 0 y 100"
+        that:
+          - numero <=100
+          - numero > 0
+    
+
+    
+
+
+

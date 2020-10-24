@@ -1,0 +1,19 @@
+---
+- name: Trabajar con modulos de utilidades
+  hosts: localhost
+  become: True
+  tasks:
+    - set_fact: nombre={{ ansible_hostname | upper }}
+    - debug: var=nombre
+    #- wait_for: port=8080 delay=2
+    - name: Esperar hasta que fichero exista
+      wait_for: path=/tmp/exista
+    - name: Esperar hasta que fichero no exista
+      wait_for: path=/tmp/exista state=absent
+      
+    
+
+    
+
+
+

@@ -1,0 +1,11 @@
+---
+- name: Trabajar con modulos de comandos
+  hosts: webservers
+  become: True
+  tasks:
+    - command: uname -a removes=/tmp/noejecutar
+#   - command: uname -a creates=/tmp/noejecutar
+    
+
+
+
