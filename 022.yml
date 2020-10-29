@@ -1,0 +1,19 @@
+---
+- name: Trabajar con modulos de gestion de sistema
+  hosts: vm_1
+  become: True
+  tasks:
+    - iptables:
+        chain: INPUT
+        source: 0.0.0.0
+        destination_port: 80
+        jump: ACCEPT
+        protocol: tcp
+
+
+    
+
+    
+
+
+

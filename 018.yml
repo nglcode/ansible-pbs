@@ -1,0 +1,26 @@
+---
+- name: Trabajar con modulos de notificaciones
+  connection: localhost
+  hosts: localhost
+  vars:
+    - notificar: "slack"
+  tasks:
+    - mail:
+        subject: "Tarea finalizada - enviar mail"
+        body: "La tarea ha concluido correctamente. {{ ansible_fqdn }}"
+      delegate_to: localhost
+      when: notificar == "mail"
+    - name: Enviar notificacion a Slack
+      slack:
+        token: T01BVF8HRSB/B01D6LDJV6Z/mVhkaqQJEb7Z43bBD3gtC6ut
+        channel: "#general"
+        msg: '{{ inventory_hostname }} completed :)'
+      delegate_to: localhost
+      when: notificar == "slack"
+      
+    
+
+    
+
+
+

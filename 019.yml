@@ -1,0 +1,17 @@
+---
+- name: Trabajar con modulos de gestion de sistema
+  hosts: group1
+  tasks:
+    - name: Crear programacion backup
+      cron:
+        name: "crear backup"
+        hour: 2
+        minute: 0
+        job: "/scripts/backup.sh"
+
+    
+
+    
+
+
+

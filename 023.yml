@@ -1,0 +1,29 @@
+---
+- name: Trabajar con modulos de control de versiones
+  hosts: vm_1
+  tasks:
+    - name: Descargar ansible examples
+      git:
+        repo: https://github.com/ansible/ansible-examples.git
+        dest: /tmp/ansible-examples
+    - name: Configurar editor a vim
+      git_config:
+        name: core.editor
+        value: vim
+        scope: global
+    - name: Descargar ejemplo con hg
+      hg:
+        repo: https://www.selenic.com/repo/hello
+        dest: /tmp/hg-example
+    - name: Obtener codigo svn
+      subversion:
+        repo: https://develop.svn.wordpress.org/trunk/src/
+        dest: /tmp/svn-example
+
+
+    
+
+    
+
+
+

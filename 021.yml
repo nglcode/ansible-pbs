@@ -1,0 +1,19 @@
+---
+- name: Trabajar con modulos de gestion de sistema
+  hosts: vm_2
+  tasks:
+    - debug: var=ansible_hostname
+    - hostname: name=ubuntu
+    - ping:
+    - setup: 
+    - debug: var=ansible_hostname
+    - timezone: name="Europe/Madrid"
+
+
+
+    
+
+    
+
+
+

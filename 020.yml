@@ -1,0 +1,21 @@
+---
+- name: Trabajar con modulos de gestion de sistema
+  hosts: localhost
+  tasks:
+    - name: Habilitar http/https
+      firewalld:
+        state: enabled
+        service: "{{ item }}"
+      delegate_to: localhost
+      with_items:
+        - "http"
+        - "https"
+    - group: name=jboss state=present gid=185
+
+
+    
+
+    
+
+
+
